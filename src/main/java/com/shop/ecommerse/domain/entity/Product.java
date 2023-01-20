@@ -1,4 +1,4 @@
-package com.shop.ecommerse.domain;
+package com.shop.ecommerse.domain.entity;
 
 import javax.persistence.*;
 
@@ -29,14 +29,11 @@ public class Product implements Persistable<Long> {
     @Builder.Default
     private String description = "";
 
-    @OneToMany(
-            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
-            mappedBy = "product",
-            fetch = FetchType.LAZY
-    )
-    @Builder.Default
+    @JoinColumn(name = "categoty_id")
     @JsonManagedReference
-    private Set<CategoryList> categories = Collections.emptySet();
+    @ManyToOne
+    private ProductCategory categories;
+
     @OneToMany(
             cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
             mappedBy = "product",

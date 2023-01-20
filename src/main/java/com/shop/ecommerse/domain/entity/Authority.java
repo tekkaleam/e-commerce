@@ -1,6 +1,7 @@
-package com.shop.ecommerse.domain;
+package com.shop.ecommerse.domain.entity;
 
 import javax.persistence.*;
+
 import lombok.*;
 import org.springframework.data.domain.Persistable;
 
@@ -24,9 +25,6 @@ public class Authority implements Persistable<Long> {
 
     @Column(name = "role")
     private String role;
-
-//    @ManyToMany(mappedBy = "authorities")
-//    private Set<User> users;
 
     @OneToMany(
             cascade = {CascadeType.PERSIST, CascadeType.REMOVE},

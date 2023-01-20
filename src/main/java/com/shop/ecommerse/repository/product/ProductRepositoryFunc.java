@@ -1,7 +1,7 @@
 package com.shop.ecommerse.repository.product;
 
 
-import com.shop.ecommerse.domain.Product;
+import com.shop.ecommerse.domain.entity.Product;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package com.shop.ecommerse.domain;
+package com.shop.ecommerse.domain.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

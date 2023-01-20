@@ -1,6 +1,6 @@
 package com.shop.ecommerse.repository.product;
 
-import com.shop.ecommerse.domain.Product;
+import com.shop.ecommerse.domain.entity.Product;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -127,4 +127,5 @@ public class ProductRepositoryTest {
                 .hasMessageContaining("")
                 .isInstanceOf(DataIntegrityViolationException.class);
     }
+
 }

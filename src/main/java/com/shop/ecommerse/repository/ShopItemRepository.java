@@ -1,6 +1,6 @@
 package com.shop.ecommerse.repository;
 
-import com.shop.ecommerse.domain.Product;
+import com.shop.ecommerse.domain.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 

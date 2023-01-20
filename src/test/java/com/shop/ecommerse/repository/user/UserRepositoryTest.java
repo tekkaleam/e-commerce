@@ -1,7 +1,7 @@
 package com.shop.ecommerse.repository.user;
 
-import com.shop.ecommerse.domain.Order;
-import com.shop.ecommerse.domain.User;
+import com.shop.ecommerse.domain.entity.Order;
+import com.shop.ecommerse.domain.entity.User;
 import com.shop.ecommerse.repository.User.UserRepositoryImpl;
 import com.shop.ecommerse.repository.order.OrderRepository;
 import org.junit.jupiter.api.Test;
@@ -159,7 +159,7 @@ public class UserRepositoryTest {
         User user = User.builder().email(null).phoneNumber("832428934623").build();
         assertThatThrownBy(() -> underTest.save(user))
                 .hasMessageContaining(
-                        "not-null property references a null or transient value : com.shop.ecommerse.domain.User.email; nested exception is org.hibernate.PropertyValueException: not-null property references a null or transient value : com.shop.ecommerse.domain.User.email")
+                        "not-null property references a null or transient value : com.shop.ecommerse.domain.entity.User.email; nested exception is org.hibernate.PropertyValueException: not-null property references a null or transient value : com.shop.ecommerse.domain.entity.User.email")
                 .isInstanceOf(DataIntegrityViolationException.class);
     }
 
@@ -171,7 +171,7 @@ public class UserRepositoryTest {
 
         assertThatThrownBy(() -> underTest.save(user))
                 .hasMessageContaining(
-                        "not-null property references a null or transient value : com.shop.ecommerse.domain.User.phoneNumber; nested exception is org.hibernate.PropertyValueException: not-null property references a null or transient value : com.shop.ecommerse.domain.User.phoneNumber")
+                        "not-null property references a null or transient value : com.shop.ecommerse.domain.entity.User.phoneNumber; nested exception is org.hibernate.PropertyValueException: not-null property references a null or transient value : com.shop.ecommerse.domain.entity.User.phoneNumber")
                 .isInstanceOf(DataIntegrityViolationException.class);
     }
 

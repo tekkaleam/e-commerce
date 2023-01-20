@@ -1,9 +1,9 @@
 package com.shop.ecommerse.repository.user;
 
-import com.shop.ecommerse.domain.Authority;
-import com.shop.ecommerse.domain.User;
-import com.shop.ecommerse.domain.UserDetails;
-import com.shop.ecommerse.domain.UserDetailsId;
+import com.shop.ecommerse.domain.entity.Authority;
+import com.shop.ecommerse.domain.entity.User;
+import com.shop.ecommerse.domain.entity.UserDetails;
+import com.shop.ecommerse.domain.entity.UserDetailsId;
 
 public class UserDataSet {
 

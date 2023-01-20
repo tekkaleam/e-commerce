@@ -1,6 +1,6 @@
 package com.shop.ecommerse.repository.User;
 
-import com.shop.ecommerse.domain.User;
+import com.shop.ecommerse.domain.entity.User;
 
 import java.util.List;
 import java.util.Optional;

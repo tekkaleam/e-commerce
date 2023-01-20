@@ -1,8 +1,6 @@
 package com.shop.ecommerse.repository.product;
 
-import com.shop.ecommerse.domain.Order;
-import com.shop.ecommerse.domain.Product;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.shop.ecommerse.domain.entity.Product;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;
 

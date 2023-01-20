@@ -1,4 +1,4 @@
-package com.shop.ecommerse.domain;
+package com.shop.ecommerse.domain.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +20,7 @@ public class BaseEntity implements Persistable<Long> {
 
     @Id
     private Long id;
+
     @Version
     private Long version;
 

@@ -1,7 +1,7 @@
 package com.shop.ecommerse.repository.order;
 
-import com.shop.ecommerse.domain.Order;
-import com.shop.ecommerse.domain.User;
+import com.shop.ecommerse.domain.entity.Order;
+import com.shop.ecommerse.domain.entity.User;
 import com.shop.ecommerse.repository.User.UserRepositoryImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

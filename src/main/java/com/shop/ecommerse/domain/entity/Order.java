@@ -1,4 +1,4 @@
-package com.shop.ecommerse.domain;
+package com.shop.ecommerse.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;

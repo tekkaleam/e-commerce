@@ -1,6 +1,6 @@
 package com.shop.ecommerse.repository.order;
 
-import com.shop.ecommerse.domain.Order;
+import com.shop.ecommerse.domain.entity.Order;
 
 import java.util.Collections;
 

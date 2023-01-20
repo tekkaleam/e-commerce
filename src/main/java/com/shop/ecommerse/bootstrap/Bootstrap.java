@@ -1,6 +1,6 @@
 package com.shop.ecommerse.bootstrap;
 
-import com.shop.ecommerse.domain.User;
+import com.shop.ecommerse.domain.entity.User;
 import com.shop.ecommerse.repository.User.UserRepositoryImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;

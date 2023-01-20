@@ -1,6 +1,6 @@
 package com.shop.ecommerse.repository.User;
 
-import com.shop.ecommerse.domain.User;
+import com.shop.ecommerse.domain.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;

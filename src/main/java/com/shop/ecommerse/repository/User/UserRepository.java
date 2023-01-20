@@ -1,7 +1,6 @@
 package com.shop.ecommerse.repository.User;
 
-import com.shop.ecommerse.domain.User;
-import org.springframework.data.jpa.repository.EntityGraph;
+import com.shop.ecommerse.domain.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

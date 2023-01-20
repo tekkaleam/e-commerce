@@ -1,6 +1,6 @@
 package com.shop.ecommerse.repository.order;
 
-import com.shop.ecommerse.domain.Order;
+import com.shop.ecommerse.domain.entity.Order;
 import com.shop.ecommerse.repository.User.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;

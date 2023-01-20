@@ -1,12 +1,9 @@
-package com.shop.ecommerse.domain;
+package com.shop.ecommerse.domain.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import org.springframework.data.domain.Persistable;
 
 import javax.persistence.*;
-import java.util.Collections;
-import java.util.Set;
 
 @Entity(name = "Category")
 @Getter
@@ -15,7 +12,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Table(name = "category")
 @Builder
-public class Category implements Persistable<Long> {
+public class ProductCategory implements Persistable<Long> {
 
     @Id
     @SequenceGenerator(name = "category_id_seq", sequenceName = "category_id_seq", allocationSize = 20)
@@ -28,15 +25,6 @@ public class Category implements Persistable<Long> {
     @Enumerated(EnumType.STRING)
     @Column(name = "type")
     private Type type;
-
-    @OneToMany(
-            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
-            mappedBy = "category",
-            fetch = FetchType.LAZY
-    )
-    @Builder.Default
-    @JsonManagedReference
-    private Set<CategoryList> categoryListSet = Collections.emptySet();
 
     @Override
     public boolean isNew() {

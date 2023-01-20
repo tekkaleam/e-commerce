@@ -21,7 +21,7 @@ public class ProductRepositoryTest {
         Product product = underTest.save(Product.builder()
                 .amount(2)
                 .name("Cikle")
-                .price(1000)
+                .price(1000F)
                 .build());
 
         assertThat(underTest.findById(product.getId()))
@@ -33,12 +33,12 @@ public class ProductRepositoryTest {
         Product product = underTest.save(Product.builder()
                 .amount(2)
                 .name("Cikle")
-                .price(1000)
+                .price(1000F)
                 .build());
         Product product1 = underTest.save(Product.builder()
                 .amount(1)
                 .name("Clock")
-                .price(1500)
+                .price(1500F)
                 .build());
 
         int i = underTest.delete(product1.getId());
@@ -60,22 +60,22 @@ public class ProductRepositoryTest {
         Product product = underTest.save(Product.builder()
                 .amount(2)
                 .name("Cikle")
-                .price(1000)
+                .price(1000F)
                 .build());
         Product product1 = underTest.save(Product.builder()
                 .amount(1)
                 .name("Clock")
-                .price(1500)
+                .price(1500F)
                 .build());
         Product product2 = underTest.save(Product.builder()
                 .amount(2)
                 .name("Sim")
-                .price(1599)
+                .price(1599F)
                 .build());
         Product product3 = underTest.save(Product.builder()
                 .amount(4)
                 .name("lolipop")
-                .price(999)
+                .price(999F)
                 .build());
 
         assertThat(underTest.findAll())
@@ -88,17 +88,17 @@ public class ProductRepositoryTest {
         Product product1 = underTest.save(Product.builder()
                 .amount(1)
                 .name("Clock")
-                .price(1500)
+                .price(1500F)
                 .build());
         Product product2 = underTest.save(Product.builder()
                 .amount(2)
                 .name("Sim")
-                .price(1599)
+                .price(1599F)
                 .build());
         Product product3 = underTest.save(Product.builder()
                 .amount(4)
                 .name("lolipop")
-                .price(999)
+                .price(999F)
                 .build());
 
         assertThat(underTest.findById(product3.getId()))
@@ -111,7 +111,7 @@ public class ProductRepositoryTest {
         assertThatThrownBy(() -> underTest.save(Product.builder()
                 .amount(1)
                 .name(null)
-                .price(1500)
+                .price(1500F)
                 .build()))
                 .hasMessageContaining("")
                 .isInstanceOf(DataIntegrityViolationException.class);

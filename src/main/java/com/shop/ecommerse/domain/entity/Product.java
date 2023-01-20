@@ -7,6 +7,7 @@ import lombok.*;
 import org.springframework.data.domain.Persistable;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 
 @Entity(name = "Product")
@@ -34,6 +35,9 @@ public class Product implements Persistable<Long> {
     @ManyToOne
     private ProductCategory categories;
 
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<ProductVariant> productVariantList;
+
     @OneToMany(
             cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
             mappedBy = "product",
@@ -42,7 +46,7 @@ public class Product implements Persistable<Long> {
     private Set<OrderItem> items = Collections.emptySet();
 
     @Column(name = "price", nullable = false)
-    private Integer price;
+    private Float price;
     @Column(name = "amount")
     @Builder.Default
     private Integer amount = 0;

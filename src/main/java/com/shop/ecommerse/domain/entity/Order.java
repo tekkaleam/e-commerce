@@ -51,7 +51,7 @@ public class Order implements Persistable<Long> {
             orphanRemoval = true)
     private List<OrderItem> orderItems;
     @Column(name = "total_price")
-    private Integer totalPrice;
+    private Double totalPrice;
 
     public Order(User user, String phone, String shipAddress, LocalDateTime creationDate, List<OrderItem> orderItems) {
         this.user = user;
@@ -62,10 +62,10 @@ public class Order implements Persistable<Long> {
         this.totalPrice = getTotalPrice(orderItems);
     }
 
-    public Integer getTotalPrice(List<OrderItem> orderItems){
-        if (orderItems.size() == 0) return 0;
+    public Double getTotalPrice(List<OrderItem> orderItems){
+        if (orderItems.size() == 0) return 0.0;
         return orderItems.stream()
-                .mapToInt(i -> i.getAmount()*i.getProduct().getPrice())
+                .mapToDouble(i -> i.getAmount()*i.getProduct().getPrice())
                 .sum();
     }
 

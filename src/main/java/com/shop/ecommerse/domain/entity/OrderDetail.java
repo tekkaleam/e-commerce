@@ -4,14 +4,14 @@ import javax.persistence.*;
 import lombok.*;
 import org.springframework.data.domain.Persistable;
 
-@Entity(name = "OrderItem")
-@Table(name = "order_items")
+@Entity(name = "OrderDetail")
+@Table(name = "order_details")
 @ToString(exclude = "order")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrderItem implements Persistable<Long> {
+public class OrderDetail implements Persistable<Long> {
 
     @Id
     @SequenceGenerator(name = "order_item_id_seq", sequenceName = "order_item_id_seq", allocationSize = 20)
@@ -21,9 +21,11 @@ public class OrderItem implements Persistable<Long> {
     @ManyToOne
     @JoinColumn(name = "order_id")
     private Order order;
+
     @ManyToOne
-    @JoinColumn(name = "shop_item_id")
+    @JoinColumn(name = "product_id")
     private Product product;
+
     @Column(name = "amount")
     private Integer amount;
 

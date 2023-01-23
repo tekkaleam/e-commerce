@@ -14,9 +14,6 @@ public class Discount {
     @OneToMany(mappedBy = "discount")
     private List<Order> orderList;
 
-//    @OneToMany(mappedBy = "discount")
-//    private List<Cart> cartList;
-
     @Column(name = "code")
     private String code;
 

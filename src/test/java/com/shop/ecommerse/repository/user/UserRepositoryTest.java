@@ -188,7 +188,7 @@ public class UserRepositoryTest {
         Order ADMIN_ORDER1 =  Order.builder().id(null)
                 .phone(ADMIN.getPhoneNumber())
                 .user(user)
-                .orderItems(Collections.emptyList())
+                .orderDetails(Collections.emptyList())
                 .shipAddress("foo")
                 .build();
         Order ADMIN_ORDER2 = Order
@@ -197,7 +197,7 @@ public class UserRepositoryTest {
                 .phone(ADMIN.getPhoneNumber())
                 .user(user)
                 .shipAddress("bar")
-                .orderItems(Collections.emptyList())
+                .orderDetails(Collections.emptyList())
                 .build();
 
         orderRepository.save(ADMIN_ORDER1);

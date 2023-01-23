@@ -37,7 +37,7 @@ public class OrderRepositoryTest {
         Order testOrder = underTest.save(Order.builder().id(null)
                 .phone("89307772211")
                 .user(user)
-                .orderItems(Collections.emptyList())
+                .orderDetails(Collections.emptyList())
                 .shipAddress("foo")
                 .build(), user.getId());
 
@@ -62,13 +62,13 @@ public class OrderRepositoryTest {
         Order testOrder =  underTest.save(Order.builder().id(null)
                .phone("89307778899")
                .user(user)
-               .orderItems(Collections.emptyList())
+               .orderDetails(Collections.emptyList())
                .shipAddress("foo")
                .build(),user.getId());
        Order testOrder1 =  underTest.save(Order.builder().id(null)
                .phone("89307773399")
                .user(user)
-               .orderItems(Collections.emptyList())
+               .orderDetails(Collections.emptyList())
                .shipAddress("foo")
                .build(), user.getId());
 
@@ -98,19 +98,19 @@ public class OrderRepositoryTest {
         Order testOrder =  underTest.save(Order.builder().id(null)
                 .phone("89307778899")
                 .user(user)
-                .orderItems(Collections.emptyList())
+                .orderDetails(Collections.emptyList())
                 .shipAddress("foo")
                 .build(),user.getId());
         Order testOrder1 =  underTest.save(Order.builder().id(null)
                 .phone("89307773399")
                 .user(user)
-                .orderItems(Collections.emptyList())
+                .orderDetails(Collections.emptyList())
                 .shipAddress("foo")
                 .build(), user.getId());
         Order testOrder2 =  underTest.save(Order.builder().id(null)
                 .phone("89307773499")
                 .user(user)
-                .orderItems(Collections.emptyList())
+                .orderDetails(Collections.emptyList())
                 .shipAddress("foo")
                 .build(), user.getId());
 
@@ -134,19 +134,19 @@ public class OrderRepositoryTest {
         Order testOrder =  underTest.save(Order.builder().id(null)
                 .phone("89307778899")
                 .user(user)
-                .orderItems(Collections.emptyList())
+                .orderDetails(Collections.emptyList())
                 .shipAddress("foo")
                 .build(),user.getId());
         Order testOrder1 =  underTest.save(Order.builder().id(null)
                 .phone("89307773399")
                 .user(user)
-                .orderItems(Collections.emptyList())
+                .orderDetails(Collections.emptyList())
                 .shipAddress("foo")
                 .build(), user.getId());
         Order testOrder2 =  underTest.save(Order.builder().id(null)
                 .phone("89307773499")
                 .user(user)
-                .orderItems(Collections.emptyList())
+                .orderDetails(Collections.emptyList())
                 .shipAddress("foo")
                 .build(), user.getId());
 

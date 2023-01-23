@@ -12,7 +12,7 @@ public class OrderDataSet {
             Order.builder().id(null)
                     .phone(ADMIN.getPhoneNumber())
                     .user(ADMIN)
-                    .orderItems(Collections.emptyList())
+                    .orderDetails(Collections.emptyList())
                     .shipAddress("foo")
                     .build();
     public static final Order ADMIN_ORDER2 = Order
@@ -21,10 +21,10 @@ public class OrderDataSet {
             .phone(ADMIN.getPhoneNumber())
             .user(ADMIN)
             .shipAddress("bar")
-            .orderItems(Collections.emptyList())
+            .orderDetails(Collections.emptyList())
             .build();
     public static final Order ADMIN_ORDER3 = Order.builder()
-            .orderItems(Collections.emptyList())
+            .orderDetails(Collections.emptyList())
             .phone(ADMIN.getPhoneNumber())
             .user(ADMIN)
             .shipAddress("foo")
@@ -34,19 +34,19 @@ public class OrderDataSet {
             .user(null)
             .phone(USER.getPhoneNumber())
             .shipAddress("san-fran")
-            .orderItems(Collections.emptyList())
+            .orderDetails(Collections.emptyList())
             .build();
     public static final Order USER_ORDER2 = Order.builder()
             .user(null)
             .phone(USER.getPhoneNumber())
             .shipAddress("new-york")
-            .orderItems(Collections.emptyList())
+            .orderDetails(Collections.emptyList())
             .build();
     public static final Order USER_ORDER3 = Order.builder()
             .user(null)
             .phone(USER.getPhoneNumber())
             .shipAddress("san")
-            .orderItems(Collections.emptyList())
+            .orderDetails(Collections.emptyList())
             .build();
 
 }

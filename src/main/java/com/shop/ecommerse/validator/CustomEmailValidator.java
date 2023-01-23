@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 public class CustomEmailValidator implements ConstraintValidator<CustomEmail, String> {
 
-    private static final String EMAIL_PATTERN = "^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
+    private static final String EMAIL_PATTERN = "^[a-zA-Z\\d_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z\\d.-]+$";
     private Pattern pattern;
     private Matcher matcher;
 

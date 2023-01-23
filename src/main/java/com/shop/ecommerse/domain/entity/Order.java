@@ -42,6 +42,13 @@ public class Order implements Persistable<Long> {
     private String phone;
     @Column(name = "ship_address")
     private String shipAddress;
+
+    @Column(name = "shipped")
+    private Integer shipped;
+
+    @Column(name = "tracking_number")
+    private String trackingNumber;
+
     @Column(name = "date")
     @CreationTimestamp
     @Builder.Default
@@ -49,22 +56,22 @@ public class Order implements Persistable<Long> {
     @OneToMany(mappedBy = "order",
             fetch = FetchType.EAGER,
             orphanRemoval = true)
-    private List<OrderItem> orderItems;
+    private List<OrderDetail> orderDetails;
     @Column(name = "total_price")
     private Double totalPrice;
 
-    public Order(User user, String phone, String shipAddress, LocalDateTime creationDate, List<OrderItem> orderItems) {
+    public Order(User user, String phone, String shipAddress, LocalDateTime creationDate, List<OrderDetail> orderDetails) {
         this.user = user;
         this.phone = phone;
         this.shipAddress = shipAddress;
         this.creationDate = creationDate;
-        this.orderItems = orderItems;
-        this.totalPrice = getTotalPrice(orderItems);
+        this.orderDetails = orderDetails;
+        this.totalPrice = getTotalPrice(orderDetails);
     }
 
-    public Double getTotalPrice(List<OrderItem> orderItems){
-        if (orderItems.size() == 0) return 0.0;
-        return orderItems.stream()
+    public Double getTotalPrice(List<OrderDetail> orderDetails){
+        if (orderDetails.size() == 0) return 0.0;
+        return orderDetails.stream()
                 .mapToDouble(i -> i.getAmount()*i.getProduct().getPrice())
                 .sum();
     }

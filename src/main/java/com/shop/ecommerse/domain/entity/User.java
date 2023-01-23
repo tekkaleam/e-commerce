@@ -55,6 +55,18 @@ public class User implements Persistable<Long> {
     @Builder.Default
     private Set<UserDetails> userDetails = Collections.emptySet();
 
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "country")
+    private String country;
+
+    @Column(name = "city")
+    private String city;
+
+    @Column(name = "email_verified")
+    private Integer emailVerified;
+
     @Column(name = "registration_date")
     @CreationTimestamp
     @Builder.Default

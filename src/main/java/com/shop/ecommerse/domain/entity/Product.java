@@ -43,7 +43,7 @@ public class Product implements Persistable<Long> {
             mappedBy = "product",
             fetch = FetchType.LAZY)
     @Builder.Default
-    private Set<OrderItem> items = Collections.emptySet();
+    private Set<OrderDetail> items = Collections.emptySet();
 
     @Column(name = "price", nullable = false)
     private Float price;

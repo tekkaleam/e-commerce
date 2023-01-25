@@ -117,7 +117,7 @@ public class UserRepositoryTest {
                 .phoneNumber("89318883455")
                 .build());
 
-        Optional<User> testUser = underTest.getByEmail(user.getEmail());
+        Optional<User> testUser = underTest.findByEmail(user.getEmail());
 
         assertThat(testUser)
                 .isPresent()

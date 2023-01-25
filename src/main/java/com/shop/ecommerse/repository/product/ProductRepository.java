@@ -1,6 +1,8 @@
 package com.shop.ecommerse.repository.product;
 
 import com.shop.ecommerse.domain.entity.Product;
+import com.shop.ecommerse.domain.entity.ProductCategory;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -25,4 +27,16 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     Optional<Product> findByName(@Param("name") String name);
     @Query("SELECT P FROM Product P WHERE P.price BETWEEN ?1 AND ?2")
     List<Product> findProductsBetweenPrice(Integer bottomPrice, Integer roofPrice);
+
+    Optional<Product> findByUrl(String url);
+
+    List<Product> findAllByProductCategory(Pageable pageable, ProductCategory productCategory);
+
+    List<Product> findTop8ByOrderByDateCreatedDesc();
+
+    List<Product> findAllByNameContainingIgnoreCase(String name, Pageable pageable);
+
+    List<Product> findTop8ByProductCategoryAndIdIsNot(ProductCategory productCategory, Long id);
+
+    List<Product> findAllByProductCategoryIsNot(ProductCategory productCategory, Pageable pageable);
 }

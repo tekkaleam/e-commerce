@@ -28,8 +28,8 @@ public class UserRepositoryImpl implements UserRepoFunc {
         return userRepository.findById(id);
     }
 
-    @Override
-    public Optional<User> getByEmail(String email) {
+
+    public Optional<User> findByEmail(String email) {
         return userRepository.getUserByEmail(email);
     }
 
@@ -46,6 +46,11 @@ public class UserRepositoryImpl implements UserRepoFunc {
     @Override
     public Optional<User> getUserWithOrders(Long id) {
         return userRepository.getUserWithOrOrders(id);
+    }
+
+    @Override
+    public Boolean existsByEmail(String email) {
+        return userRepository.existsByEmail(email);
     }
 
     // Lazy, still can not find reason why its dropping

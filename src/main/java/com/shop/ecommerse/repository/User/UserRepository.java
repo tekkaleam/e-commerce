@@ -26,4 +26,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
 //    @EntityGraph(attributePaths = {"orders"}, type = EntityGraph.EntityGraphType.LOAD)
     @Query("SELECT U FROM Users U WHERE U.id=?1")
     Optional<User> getUserWithOrOrders(Long id);
+    Boolean existsByEmail(String email);
 }

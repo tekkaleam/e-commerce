@@ -38,6 +38,9 @@ public class Product implements Persistable<Long> {
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<ProductVariant> productVariantList;
 
+    @Column(name = "url")
+    private String url;
+
     @OneToMany(
             cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
             mappedBy = "product",

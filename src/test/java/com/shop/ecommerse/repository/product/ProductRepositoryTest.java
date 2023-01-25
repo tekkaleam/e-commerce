@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class ProductRepositoryTest {
 
     @Autowired
-    private ProductRepositoryImpl underTest;
+    private ProductRepository underTest;
     @Test
     void isShouldSaveProduct() {
         Product product = underTest.save(Product.builder()
@@ -49,7 +49,7 @@ public class ProductRepositoryTest {
                 .hasSize(1)
                         .contains(product);
 
-        assertThat(underTest.findByProductName(product1.getName()))
+        assertThat(underTest.findByName(product1.getName()))
                 .isNotPresent();
 
         assertThat(i)

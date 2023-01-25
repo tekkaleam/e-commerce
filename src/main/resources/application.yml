@@ -1,0 +1,47 @@
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      use-new-id-generator-mappings: true
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+    properties:
+      hibernate:
+        format_sql: true
+
+  application:
+    name: iT-shirt
+  main:
+    banner-mode: off
+
+  datasource:
+    username: postgres
+    password: pass
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres
+
+  h2:
+    console:
+      enabled: true
+      path: /h2
+
+security:
+  public-pattern: /api/public/**
+  auth:
+    username: user_name
+    url: http://localhost:8081/oauth/check_token
+    client_id: client_id
+    client_password: client_password
+    connection_timeout: 60
+    read_timeout: 60
+    whitelist: >
+      /,
+      /v2/api-docs,
+      /swagger-resources,
+      /swagger-resources/**,
+      /configuration/ui,
+      /configuration/security,
+      /swagger-ui.html,
+      /webjars/**,
+      /api/public/**

@@ -16,11 +16,14 @@ public interface UserRepoFunc {
     Optional<User> get(Long id);
 
     // null if not found
-    Optional<User> getByEmail(String email);
+    Optional<User> findByEmail(String email);
 
     List<User> getAll();
 
     Optional<User> findUserByUsername(String username);
 
     Optional<User> getUserWithOrders(Long id);
+
+    Boolean existsByEmail(String email);
+
 }

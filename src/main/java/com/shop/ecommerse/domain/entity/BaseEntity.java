@@ -25,7 +25,7 @@ public class BaseEntity implements Persistable<Long> {
     private Long version;
 
     @CreationTimestamp
-    @Column(updatable = false)
+    @Column(updatable = false, insertable = false)
     private Timestamp createdDate;
 
     @Override

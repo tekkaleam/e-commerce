@@ -11,8 +11,8 @@ import com.shop.ecommerse.domain.response.product.ProductVariantResponse;
 import com.shop.ecommerse.domain.specs.ProductVariantSpecs;
 import com.shop.ecommerse.handler.exceptions.InvalidArgumentException;
 import com.shop.ecommerse.handler.exceptions.ResourceNotFoundException;
-import com.shop.ecommerse.repository.product.ProductRepository;
-import com.shop.ecommerse.repository.product.ProductVariantRepository;
+import com.shop.ecommerse.repository.ProductRepository;
+import com.shop.ecommerse.repository.ProductVariantRepository;
 import com.shop.ecommerse.service.cache.ProductCacheService;
 import com.shop.ecommerse.service.cache.ProductCacheServiceImpl;
 import com.shop.ecommerse.service.cache.ProductVariantCacheService;
@@ -37,13 +37,13 @@ public class ProductServiceImpl implements ProductService{
     private final ProductVariantResponseConverter productVariantResponseConverter;
     private final ProductDetailsResponseConverter productDetailsResponseConverter;
 
-    public ProductServiceImpl(ProductCacheServiceImpl productCacheServiceImpl, ProductRepository productRepository,
+    public ProductServiceImpl(ProductCacheService productCacheService, ProductRepository productRepository,
                               ProductVariantRepository productVariantRepository,
                               ProductVariantCacheService productVariantCacheService,
                               ProductResponseConverter productResponseConverter,
                               ProductVariantResponseConverter productVariantResponseConverter,
                               ProductDetailsResponseConverter productDetailsResponseConverter) {
-        this.productCacheService = productCacheServiceImpl;
+        this.productCacheService = productCacheService;
         this.productRepository = productRepository;
         this.productVariantRepository = productVariantRepository;
         this.productVariantCacheService = productVariantCacheService;
@@ -61,7 +61,7 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public List<ProductVariantResponse> getAll(Integer page, Integer size, String sort, String category, Float minPrice, Float maxPrice, String color) {
+    public List<ProductVariantResponse> getAll(Integer page, Integer size, String sort, String category, Float minPrice, Float maxPrice) {
 
         PageRequest pageRequest;
 
@@ -76,8 +76,7 @@ public class ProductServiceImpl implements ProductService{
         }
 
         Specification<ProductVariant> combinations =
-                Objects.requireNonNull(Specification.where(ProductVariantSpecs.withColor(color)))
-                        .and(ProductVariantSpecs.withCategory(category))
+                Objects.requireNonNull(Specification.where(ProductVariantSpecs.withCategory(category)))
                         .and(ProductVariantSpecs.minPrice(minPrice))
                         .and(ProductVariantSpecs.maxPrice(maxPrice));
 
@@ -87,6 +86,7 @@ public class ProductServiceImpl implements ProductService{
                 .collect(Collectors.toList());
 
     }
+
 
     @Override
     public Long getAllCount(String category, Float minPrice, Float maxPrice) {
@@ -114,7 +114,7 @@ public class ProductServiceImpl implements ProductService{
         if (Objects.isNull(product)) {
             throw new ResourceNotFoundException("Related products not found");
         }
-        List<Product> products = productCacheService.getRelatedProducts(product.getCategories(), product.getId());
+        List<Product> products = productCacheService.getRelatedProducts(product.getProductCategory(), product.getId());
         return products
                 .stream()
                 .map(productResponseConverter)

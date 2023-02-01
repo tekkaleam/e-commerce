@@ -9,7 +9,7 @@ import com.shop.ecommerse.domain.request.user.UpdateUserRequest;
 import com.shop.ecommerse.domain.response.user.UserResponse;
 import com.shop.ecommerse.handler.exceptions.InvalidArgumentException;
 import com.shop.ecommerse.handler.exceptions.ResourceNotFoundException;
-import com.shop.ecommerse.repository.User.UserRepositoryImpl;
+import com.shop.ecommerse.repository.UserRepository;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -21,11 +21,11 @@ import java.util.Optional;
 @Service
 public class UserServiceImpl implements UserService{
 
-    private final UserRepositoryImpl userRepository;
+    private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final UserResponseConverter userResponseConverter;
 
-    public UserServiceImpl(UserRepositoryImpl userRepository,
+    public UserServiceImpl(UserRepository userRepository,
                            PasswordEncoder passwordEncoder,
                            UserResponseConverter userResponseConverter) {
         this.userRepository = userRepository;

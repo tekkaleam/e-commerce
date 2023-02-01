@@ -1,7 +1,7 @@
 package com.shop.ecommerse.bootstrap;
 
 import com.shop.ecommerse.domain.entity.User;
-import com.shop.ecommerse.repository.User.UserRepositoryImpl;
+import com.shop.ecommerse.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -10,11 +10,11 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class Bootstrap implements CommandLineRunner {
 
-    private final UserRepositoryImpl userRepository;
+    private final UserRepository userRepository;
 
     @Override
     public void run(String... args) throws Exception {
-        loadUserData();
+//        loadUserData();
     }
 
     private void loadUserData(){

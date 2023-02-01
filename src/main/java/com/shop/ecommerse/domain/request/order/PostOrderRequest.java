@@ -1,10 +1,10 @@
 package com.shop.ecommerse.domain.request.order;
 
+import com.shop.ecommerse.domain.dto.ProductVariantDTO;
 import lombok.Data;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
+import java.util.List;
 
 @Data
 public class PostOrderRequest {
@@ -24,7 +24,7 @@ public class PostOrderRequest {
     @Pattern(regexp = "^[a-zA-Z\\s]+$")
     private String city;
 
-   @NotBlank
+    @NotBlank
     @Size(min = 3, max = 40)
     @Pattern(regexp = "^[a-zA-Z\\s]+$")
     private String country;
@@ -34,4 +34,10 @@ public class PostOrderRequest {
     @Pattern(regexp = "\\d+")
     private String phone;
 
+    @NotNull
+    private Float totalPrice;
+
+    @NotNull
+    @NotEmpty
+    private List<ProductVariantDTO> productVariants;
 }

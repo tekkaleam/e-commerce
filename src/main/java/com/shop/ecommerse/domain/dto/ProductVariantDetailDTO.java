@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
+// TODO to record
 @Data
 @AllArgsConstructor
 @Builder

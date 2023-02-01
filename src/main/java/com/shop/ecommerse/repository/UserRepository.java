@@ -1,4 +1,4 @@
-package com.shop.ecommerse.repository.User;
+package com.shop.ecommerse.repository;
 
 import com.shop.ecommerse.domain.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -21,7 +21,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     int delete(@Param("id") Long id);
 
     @Query("SELECT U FROM Users U WHERE U.email=:email")
-    Optional<User>getUserByEmail(@Param("email") String email);
+    Optional<User> findByEmail(@Param("email") String email);
 
 //    @EntityGraph(attributePaths = {"orders"}, type = EntityGraph.EntityGraphType.LOAD)
     @Query("SELECT U FROM Users U WHERE U.id=?1")

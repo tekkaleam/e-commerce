@@ -4,8 +4,10 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.domain.Persistable;
 
+import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
@@ -30,10 +32,10 @@ public class Product implements Persistable<Long> {
     @Builder.Default
     private String description = "";
 
-    @JoinColumn(name = "categoty_id")
+    @JoinColumn(name = "product_category")
     @JsonManagedReference
     @ManyToOne
-    private ProductCategory categories;
+    private ProductCategory productCategory;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<ProductVariant> productVariantList;
@@ -41,18 +43,15 @@ public class Product implements Persistable<Long> {
     @Column(name = "url")
     private String url;
 
-    @OneToMany(
-            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
-            mappedBy = "product",
-            fetch = FetchType.LAZY)
-    @Builder.Default
-    private Set<OrderDetail> items = Collections.emptySet();
-
     @Column(name = "price", nullable = false)
     private Float price;
     @Column(name = "amount")
     @Builder.Default
     private Integer amount = 0;
+
+    @CreationTimestamp
+    @Column(updatable = false, insertable = false)
+    private Timestamp dateCreated;
 
     @Override
     public boolean isNew() {

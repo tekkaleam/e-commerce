@@ -1,10 +1,20 @@
 package com.shop.ecommerse.domain.entity;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 import javax.persistence.*;
 
 import java.util.List;
 
-
+@Entity
+@Table(name = "discount")
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString(exclude = {"orderList", "cartList"})
 public class Discount {
 
     @Id
@@ -13,6 +23,9 @@ public class Discount {
 
     @OneToMany(mappedBy = "discount")
     private List<Order> orderList;
+
+    @OneToMany(mappedBy = "discount")
+    private List<Cart> cartList;
 
     @Column(name = "code")
     private String code;

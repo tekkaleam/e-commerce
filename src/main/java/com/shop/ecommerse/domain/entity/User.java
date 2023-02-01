@@ -14,13 +14,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
-@Entity(name = "Users")
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "users")
+@Entity(name = "Users")
 public class User implements Persistable<Long> {
 
     @Id
@@ -42,11 +42,14 @@ public class User implements Persistable<Long> {
     @Column(name = "last_name")
     private String lastName;
 
-//    @ManyToMany(cascade = CascadeType.MERGE)
-//    @JoinTable( name = "user_authority",
-//                joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "ID")},
-//                inverseJoinColumns = {@JoinColumn(name = "authority_id", referencedColumnName = "ID")})
-//    private Set<Authority> authorities;
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Cart cart;
+
+    @ManyToMany(cascade = CascadeType.MERGE)
+    @JoinTable( name = "user_authority",
+                joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "ID")},
+                inverseJoinColumns = {@JoinColumn(name = "authority_id", referencedColumnName = "ID")})
+    private Set<Authority> authorities;
 
     @OneToMany(
             cascade = {CascadeType.PERSIST, CascadeType.REMOVE},

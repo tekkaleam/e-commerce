@@ -13,6 +13,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.server.resource.introspection.OpaqueTokenIntrospector;
 import org.springframework.security.web.SecurityFilterChain;
 
+import javax.validation.constraints.NotNull;
+
 import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
@@ -35,7 +37,7 @@ public class SecurityConfiguration{
         );
     }
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain(@NotNull HttpSecurity http) throws Exception {
         http
                 .cors()
                 .and()

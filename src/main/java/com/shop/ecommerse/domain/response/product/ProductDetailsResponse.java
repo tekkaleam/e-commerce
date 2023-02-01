@@ -6,6 +6,7 @@ import lombok.Data;
 
 import java.util.List;
 
+    // TODO to record
 @Data
 public class ProductDetailsResponse {
     private String name;

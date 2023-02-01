@@ -2,7 +2,7 @@ package com.shop.ecommerse.service.cache;
 
 import com.shop.ecommerse.domain.entity.Product;
 import com.shop.ecommerse.domain.entity.ProductCategory;
-import com.shop.ecommerse.repository.product.ProductRepository;
+import com.shop.ecommerse.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;

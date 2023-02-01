@@ -1,4 +1,4 @@
-package com.shop.ecommerse.repository.orderItem;
+package com.shop.ecommerse.repository;
 
 import com.shop.ecommerse.domain.entity.OrderDetail;
 import org.springframework.data.jpa.repository.JpaRepository;

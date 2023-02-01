@@ -1,7 +1,7 @@
 package com.shop.ecommerse.service.cache;
 
 import com.shop.ecommerse.domain.entity.ProductVariant;
-import com.shop.ecommerse.repository.product.ProductVariantRepository;
+import com.shop.ecommerse.repository.ProductVariantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;

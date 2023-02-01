@@ -1,4 +1,4 @@
-package com.shop.ecommerse.repository.product;
+package com.shop.ecommerse.repository;
 
 import com.shop.ecommerse.domain.entity.ProductVariant;
 import org.springframework.data.jpa.repository.JpaRepository;

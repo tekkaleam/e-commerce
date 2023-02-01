@@ -12,6 +12,7 @@ import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import java.sql.Timestamp;
 
+// TODO extend entities from this class to avoid boilerplate
 @Setter
 @Getter
 @NoArgsConstructor

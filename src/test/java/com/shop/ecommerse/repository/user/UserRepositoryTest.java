@@ -2,8 +2,8 @@ package com.shop.ecommerse.repository.user;
 
 import com.shop.ecommerse.domain.entity.Order;
 import com.shop.ecommerse.domain.entity.User;
-import com.shop.ecommerse.repository.User.UserRepositoryImpl;
-import com.shop.ecommerse.repository.order.OrderRepository;
+import com.shop.ecommerse.repository.OrderRepository;
+import com.shop.ecommerse.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -23,7 +23,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class UserRepositoryTest {
 
     @Autowired
-    private UserRepositoryImpl underTest;
+    private UserRepository underTest;
     @Autowired
     private OrderRepository orderRepository;
 
@@ -46,7 +46,7 @@ public class UserRepositoryTest {
                 .phoneNumber("89318883422")
                 .build());
 
-        List<User> users = underTest.getAll();
+        List<User> users = underTest.findAll();
 
         assertThat(users)
                 .isNotEmpty()
@@ -65,7 +65,7 @@ public class UserRepositoryTest {
                 .phoneNumber("89318883455")
                 .build());
 
-        Optional<User> testUser = underTest.findUserByUsername(ADMIN.getUsername());
+        Optional<User> testUser = underTest.findByUsername(ADMIN.getUsername());
 
         assertThat(testUser)
                 .isPresent()
@@ -93,8 +93,8 @@ public class UserRepositoryTest {
 
         int i = underTest.delete(user.getId());
 
-        Optional<User> testAns = underTest.findUserByUsername(user.getUsername());
-        List<User> users = underTest.getAll();
+        Optional<User> testAns = underTest.findByUsername(user.getUsername());
+        List<User> users = underTest.findAll();
 
         assertThat(testAns)
                 .isNotPresent();
@@ -143,8 +143,8 @@ public class UserRepositoryTest {
                 .phoneNumber("89318883422")
                 .build());
 
-        Optional<User> testUser = underTest.get(user.getId());
-        Optional<User> checkId = underTest.findUserByUsername(user1.getUsername());
+        Optional<User> testUser = underTest.findById(user.getId());
+        Optional<User> checkId = underTest.findByUsername(user1.getUsername());
 
         assertThat(checkId.get().getId())
                 .isEqualTo(user1.getId());
@@ -205,7 +205,7 @@ public class UserRepositoryTest {
 
         user.setOrders(List.of(ADMIN_ORDER1, ADMIN_ORDER2));
 
-        Optional<User> testUserWithOrders = underTest.getUserWithOrders(user.getId());
+        Optional<User> testUserWithOrders = underTest.findById(user.getId());
 
         assertThat(testUserWithOrders)
                 .isPresent();

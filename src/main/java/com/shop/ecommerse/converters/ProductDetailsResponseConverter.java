@@ -4,12 +4,13 @@ import com.shop.ecommerse.domain.dto.CategoryDTO;
 import com.shop.ecommerse.domain.dto.ProductVariantDetailDTO;
 import com.shop.ecommerse.domain.entity.Product;
 import com.shop.ecommerse.domain.response.product.ProductDetailsResponse;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-@Service
+@Component
 public class ProductDetailsResponseConverter implements Function<Product, ProductDetailsResponse> {
 
     @Override
@@ -17,7 +18,7 @@ public class ProductDetailsResponseConverter implements Function<Product, Produc
         ProductDetailsResponse productDetailsResponse = new ProductDetailsResponse();
         productDetailsResponse.setName(product.getName());
         productDetailsResponse.setUrl(product.getUrl());
-        productDetailsResponse.setCategory(CategoryDTO.builder().name(product.getCategories().getName()).build());
+        productDetailsResponse.setCategory(CategoryDTO.builder().name(product.getProductCategory().getName()).build());
         productDetailsResponse.setProductVariantDetails(
                 product.getProductVariantList()
                         .stream()

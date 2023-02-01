@@ -23,8 +23,8 @@ public class OrderDetail implements Persistable<Long> {
     private Order order;
 
     @ManyToOne
-    @JoinColumn(name = "product_id")
-    private Product product;
+    @JoinColumn(name = "product_variant_id")
+    private ProductVariant productVariant;
 
     @Column(name = "amount")
     private Integer amount;

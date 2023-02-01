@@ -4,6 +4,7 @@ import com.shop.ecommerse.domain.dto.ProductVariantDTO;
 import lombok.Builder;
 import lombok.Data;
 
+// TODO to record
 @Data
 @Builder
 public class ProductVariantResponse {

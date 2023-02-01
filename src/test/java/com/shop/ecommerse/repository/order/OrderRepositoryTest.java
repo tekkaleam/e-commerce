@@ -2,13 +2,15 @@ package com.shop.ecommerse.repository.order;
 
 import com.shop.ecommerse.domain.entity.Order;
 import com.shop.ecommerse.domain.entity.User;
-import com.shop.ecommerse.repository.User.UserRepositoryImpl;
+import com.shop.ecommerse.repository.OrderRepository;
+import com.shop.ecommerse.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -17,9 +19,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DataJpaTest
 public class OrderRepositoryTest {
    @Autowired
-   private OrderRepositoryImpl underTest;
+   private OrderRepository underTest;
    @Autowired
-   private UserRepositoryImpl userRepository;
+   private UserRepository userRepository;
 
     @Test
     void isShouldSaveOrder(){
@@ -39,9 +41,9 @@ public class OrderRepositoryTest {
                 .user(user)
                 .orderDetails(Collections.emptyList())
                 .shipAddress("foo")
-                .build(), user.getId());
+                .build());
 
-        Optional<Order> test = underTest.findOrderByPhoneNumber("89307772211");
+        Optional<Order> test = underTest.findByPhone("89307772211");
 
         assertThat(test)
              .isPresent()
@@ -64,15 +66,15 @@ public class OrderRepositoryTest {
                .user(user)
                .orderDetails(Collections.emptyList())
                .shipAddress("foo")
-               .build(),user.getId());
+               .build());
        Order testOrder1 =  underTest.save(Order.builder().id(null)
                .phone("89307773399")
                .user(user)
                .orderDetails(Collections.emptyList())
                .shipAddress("foo")
-               .build(), user.getId());
+               .build());
 
-        List<Order> orderList = underTest.findAllForUserId(user.getId());
+        List<Order> orderList = underTest.findAll(user.getId());
         assertThat(orderList)
                 .hasSize(2)
                 .contains(testOrder, testOrder1);
@@ -81,7 +83,7 @@ public class OrderRepositoryTest {
 
         assertThat(i).isOne();
 
-        assertThat(underTest.findOrderByPhoneNumber("89307778899"))
+        assertThat(underTest.findByPhone("89307778899"))
                 .isNotPresent();
     }
 
@@ -100,21 +102,21 @@ public class OrderRepositoryTest {
                 .user(user)
                 .orderDetails(Collections.emptyList())
                 .shipAddress("foo")
-                .build(),user.getId());
+                .build());
         Order testOrder1 =  underTest.save(Order.builder().id(null)
                 .phone("89307773399")
                 .user(user)
                 .orderDetails(Collections.emptyList())
                 .shipAddress("foo")
-                .build(), user.getId());
+                .build());
         Order testOrder2 =  underTest.save(Order.builder().id(null)
                 .phone("89307773499")
                 .user(user)
                 .orderDetails(Collections.emptyList())
                 .shipAddress("foo")
-                .build(), user.getId());
+                .build());
 
-        Optional<Order> test = Optional.ofNullable(underTest.findById(testOrder1.getId(), user.getId()));
+        Optional<Order> test = underTest.findById(Objects.requireNonNull(testOrder1.getId()));
 
         assertThat(test)
                 .isPresent()
@@ -136,21 +138,21 @@ public class OrderRepositoryTest {
                 .user(user)
                 .orderDetails(Collections.emptyList())
                 .shipAddress("foo")
-                .build(),user.getId());
+                .build());
         Order testOrder1 =  underTest.save(Order.builder().id(null)
                 .phone("89307773399")
                 .user(user)
                 .orderDetails(Collections.emptyList())
                 .shipAddress("foo")
-                .build(), user.getId());
+                .build());
         Order testOrder2 =  underTest.save(Order.builder().id(null)
                 .phone("89307773499")
                 .user(user)
                 .orderDetails(Collections.emptyList())
                 .shipAddress("foo")
-                .build(), user.getId());
+                .build());
 
-        List<Order> test = underTest.findAllForUserId(user.getId());
+        List<Order> test = underTest.findAll(user.getId());
 
         assertThat(test)
                 .isNotEmpty()

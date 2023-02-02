@@ -17,8 +17,8 @@ swagger:
     name: Tekka Api Documentation
     version: v1
   contact:
-    name: Ant Kaynak
-    url: https://www.keyist.tech
+    name:
+    url:
     email: tekken.ruw@gmail.com
 
 spring:

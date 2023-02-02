@@ -9,6 +9,18 @@ logging:
       hibernate:
         SQL: INFO
 
+swagger:
+  host:
+    address: localhost:8080
+    path: /
+  api:
+    name: Tekka Api Documentation
+    version: v1
+  contact:
+    name: Ant Kaynak
+    url: https://www.keyist.tech
+    email: tekken.ruw@gmail.com
+
 spring:
   jpa:
     show-sql: true
